@@ -5,6 +5,7 @@ import { AppCard } from '../components/AppCard';
 import { Check, ShieldCheck, Smartphone, Copy, CheckCircle2 } from 'lucide-react';
 import './ProductPage.css';
 import { BackButton } from '../components/BackButton';
+import { useStock } from '../context/StockContext';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -71,9 +72,11 @@ export const ProductPage: React.FC = () => {
                <span>✅ No Known Malware</span>
                <span>✅ Monthly Re-Validation</span>
              </div>
-             {typeof app.stock === 'number' && (
-               <div className="stock-info mt-3">Only <strong>{app.stock}</strong> left in stock</div>
-             )}
+             {(() => {
+               const live = useStock(app.id);
+               const value = typeof live === 'number' ? live : app.stock;
+               return typeof value === 'number' ? <div className="stock-info mt-3">Only <strong>{value}</strong> left in stock</div> : null;
+             })()}
            </div>
          </div>
       </div>

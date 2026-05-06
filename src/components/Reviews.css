@@ -1,0 +1,9 @@
+.reviews-block { padding: 20px 0; }
+.reviews-title { color: #fff; margin: 0 0 12px 0; }
+.reviews-list { display: flex; gap: 12px; flex-wrap: wrap; }
+.review { display: flex; gap: 12px; align-items: center; background: rgba(255,255,255,0.02); padding: 8px 12px; border-radius: 8px; }
+.review-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.review-body { color: var(--text-secondary); }
+.review-meta { display:flex; gap: 8px; align-items: center; }
+.review-rating { color: #ffd54a; }
+.review-text { font-size: 0.9rem; }

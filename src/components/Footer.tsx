@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
 import './Footer.css';
+import { Reviews } from './Reviews';
 
 export const Footer: React.FC = () => {
   const navigate = useNavigate();
@@ -35,7 +36,8 @@ export const Footer: React.FC = () => {
         </div>
       </div>
       
-      <div className="footer-bottom glass-card">
+  <Reviews />
+  <div className="footer-bottom glass-card">
         <div className="container bottom-content">
           <p className="disclaimer">Disclaimer: For educational purposes only. We provide sharing of premium accounts.</p>
           <div className="payment-support">

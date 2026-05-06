@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import type { App } from '../data';
 import './AppCard.css';
 import { Download, Star } from 'lucide-react';
+import { useStock } from '../context/StockContext';
 
 interface AppCardProps {
   app: App;
@@ -17,9 +18,11 @@ export const AppCard: React.FC<AppCardProps> = ({ app }) => {
         <img src={app.logoUrl} alt={app.name} className="app-logo" />
         <div>
           <div className="badge-tag price-tag">{app.ourPrice} KSH</div>
-          {typeof app.stock === 'number' && (
-            <div className="stock-badge">{app.stock} in stock</div>
-          )}
+          {(() => {
+            const live = useStock(app.id);
+            const value = typeof live === 'number' ? live : app.stock;
+            return typeof value === 'number' ? <div className="stock-badge">{value} in stock</div> : null;
+          })()}
         </div>
       </div>
       
