@@ -1,0 +1,167 @@
+.site-footer {
+  margin-top: 60px;
+  background: rgba(10, 10, 15, 0.9);
+  border-top: 1px solid var(--glass-border);
+  padding-top: 40px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.footer-tagline {
+  color: var(--primary-accent);
+  margin-bottom: 24px;
+}
+
+.trust-badges-mini {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.footer-links {
+  display: flex;
+  gap: 40px;
+}
+
+.link-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link-column h4 {
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.link-column a {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.link-column a:hover {
+  color: var(--primary-accent);
+}
+
+.footer-bottom {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  padding: 16px 0;
+  background: var(--bg-gradient-start);
+}
+
+.bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .bottom-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.payment-support {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.mpesa-text {
+  font-family: var(--font-heading);
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.whatsapp-float {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+}
+
+@media (max-width: 767px) {
+  .whatsapp-float span {
+    display: none;
+  }
+  .whatsapp-float {
+    border-radius: 50%;
+    padding: 12px;
+  }
+}
+
+/* Footer quick buttons (Home, AI Models, FAQ) */
+.footer-quick-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.quick-btn {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.15s ease-in-out;
+}
+
+.quick-btn:hover {
+  background: rgba(255,255,255,0.03);
+  color: var(--primary-accent);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 767px) {
+  .footer-quick-buttons { display: none; }
+}

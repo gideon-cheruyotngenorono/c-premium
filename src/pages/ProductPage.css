@@ -1,0 +1,392 @@
+.product-page {
+  padding-top: 40px;
+}
+
+.product-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 40px;
+  text-align: center;
+  background: radial-gradient(circle at top left, rgba(139, 92, 246, 0.1), transparent 70%);
+}
+
+@media (min-width: 768px) {
+  .product-hero {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+.product-hero-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  background: white;
+  padding: 16px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.product-name {
+  font-size: 2.5rem;
+  margin: 0 0 8px 0;
+  color: #fff;
+}
+
+.product-rating {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.badass-health-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(90deg, rgba(0, 255, 136, 0.2), rgba(139, 92, 246, 0.2));
+  border: 1px solid var(--primary-accent);
+  padding: 12px 24px;
+  border-radius: 30px;
+  color: var(--primary-accent);
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.status-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.status-indicators span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.product-grid {
+  margin-top: 40px;
+}
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .pricing-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.pricing-card {
+  padding: 32px;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.pricing-card.active {
+  border-color: var(--primary-accent);
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.yearly-card {
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.ribbon {
+  position: absolute;
+  top: 16px;
+  right: -8px;
+  background: var(--secondary-accent);
+  color: #fff;
+  padding: 4px 16px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-radius: 4px 0 0 4px;
+  box-shadow: -2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.price-display {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.big-price {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.period {
+  color: var(--text-secondary);
+}
+
+.savings-text {
+  color: var(--primary-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.plan-perks {
+  list-style: none;
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-perks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.plan-perks li svg {
+  color: var(--primary-accent);
+  flex-shrink: 0;
+}
+
+.section-title-sm {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.app-description, .install-guide {
+  padding: 32px;
+}
+
+.features-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .features-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+}
+
+.tech-specs {
+  border-top: 1px solid var(--glass-border);
+  padding-top: 16px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  background: var(--primary-accent);
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step p {
+  color: #fff;
+  margin: 0;
+  padding-top: 4px;
+}
+
+.warning-box {
+  background: rgba(255, 71, 87, 0.1);
+  border: 1px solid var(--danger-color);
+  color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.pulse-btn {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Payment Flow */
+.payment-flow {
+  padding: 40px;
+  text-align: center;
+}
+
+.back-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+
+.back-btn:hover {
+  color: #fff;
+}
+
+.payment-step-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.mpesa-icon-large {
+  width: 80px;
+  height: 80px;
+  background: #2D9B37;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-step-panel h2 {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.number-box {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--glass-border);
+  padding: 16px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.phone-number {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.btn-copy {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  padding: 8px 16px;
+}
+
+.btn-copy:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.payment-details {
+  background: rgba(255,255,255,0.02);
+  padding: 16px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.payment-details p {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+  color: var(--text-secondary);
+}
+
+.payment-details p strong {
+  color: #fff;
+}
+
+.timer-notice {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  background: rgba(255, 191, 36, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--star-color);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s;
+}
+
+.btn-whatsapp:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+}
+
+.success-panel {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.next-steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.next-steps-list li {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.support-note {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--glass-border);
+  padding-top: 16px;
+  width: 100%;
+}
