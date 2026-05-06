@@ -30,8 +30,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ onClose }) => {
     (m.features || '').toLowerCase().includes(query.toLowerCase())
   );
 
-  const handleNavigate = (path: string) => {
-    navigate(path);
+  const handleNavigate = (path: string, openPurchase?: boolean) => {
+    if (openPurchase) navigate(path, { state: { openStep: 1 } });
+    else navigate(path);
     onClose();
   };
 
@@ -67,7 +68,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ onClose }) => {
               <div className="result-group">
                 <h4>Apps & Tools</h4>
                 {filteredApps.slice(0, 5).map(app => (
-                  <div key={app.id} className="result-item" onClick={() => handleNavigate(`/product/${app.id}`)}>
+                  <div key={app.id} className="result-item" onClick={() => handleNavigate(`/product/${app.id}`, true)}>
                     <img src={app.logoUrl} alt={app.name} />
                     <div className="result-info">
                        <h5>{app.name}</h5>
@@ -82,7 +83,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ onClose }) => {
               <div className="result-group mt-4">
                 <h4>AI Models</h4>
                 {filteredModels.slice(0, 3).map(model => (
-                  <div key={model.id} className="result-item" onClick={() => handleNavigate(`/product/${model.id}`)}>
+                  <div key={model.id} className="result-item" onClick={() => handleNavigate(`/product/${model.id}`, true)}>
                     <img src={model.logoUrl} alt={model.name} />
                     <div className="result-info">
                        <h5>{model.name}</h5>

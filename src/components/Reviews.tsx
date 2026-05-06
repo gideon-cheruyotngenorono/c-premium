@@ -2,10 +2,10 @@ import React from 'react';
 import './Reviews.css';
 
 const REVIEWS = [
-  { name: 'Wanjiru', rating: 5, text: 'Got my access within 2 mins, works perfectly!', avatar: 'https://i.pravatar.cc/48?img=64' },
-  { name: 'Otieno', rating: 5, text: 'Legit and fast delivery. Thank you!', avatar: 'https://i.pravatar.cc/48?img=65' },
-  { name: 'Amina', rating: 4, text: 'Delivered quickly. Instructions were clear.', avatar: 'https://i.pravatar.cc/48?img=66' },
-  { name: 'Kahiga', rating: 5, text: 'Working full features. Great value.', avatar: 'https://i.pravatar.cc/48?img=67' }
+  { name: 'Wanjiru', rating: 5, text: 'Got my access within 2 mins, works perfectly!' },
+  { name: 'Otieno', rating: 5, text: 'Legit and fast delivery. Thank you!' },
+  { name: 'Amina', rating: 4, text: 'Delivered quickly. Instructions were clear.' },
+  { name: 'Kahiga', rating: 5, text: 'Working full features. Great value.' }
 ];
 
 export const Reviews: React.FC = () => {
@@ -15,7 +15,7 @@ export const Reviews: React.FC = () => {
       <div className="reviews-list">
         {REVIEWS.map((r, idx) => (
           <div key={idx} className="review">
-            <img src={r.avatar} alt={r.name} className="review-avatar" />
+            <div className="review-avatar initials">{r.name.split(' ').map(s=>s[0]).slice(0,2).join('').toUpperCase()}</div>
             <div className="review-body">
               <div className="review-meta">
                 <strong>{r.name}</strong>
