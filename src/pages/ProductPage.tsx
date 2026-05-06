@@ -150,6 +150,25 @@ export const ProductPage: React.FC = () => {
                    </div>
                  </div>
 
+                 {/* Single-page payment steps - moved above install guide so purchase is seen first */}
+                 {showPayment && (
+                   <div ref={(el) => { if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }} className="mt-6">
+                     {!showConfirmation ? (
+                       <PaymentSteps price={currentPrice} phone={"0701648600"} payerName={"Regina"} onConfirm={() => setShowConfirmation(true)} />
+                     ) : (
+                       <div className="payment-step-panel success-panel glass-card">
+                         <h2 className="text-primary">🎉 What Happens Next:</h2>
+                         <ul className="next-steps-list">
+                           <li><strong>1.</strong> We verify your screenshot in our system (within 2-30 minutes)</li>
+                           <li><strong>2.</strong> We send you the direct download link + login credentials</li>
+                           <li><strong>3.</strong> You install and enjoy premium access!</li>
+                         </ul>
+                         <p className="support-note mt-6">Stuck? Message us on WhatsApp, we reply 24/7</p>
+                       </div>
+                     )}
+                   </div>
+                 )}
+
                  <div className="install-guide glass-card mt-6">
                    <h3 className="section-title-sm">📥 How to Install (3 Easy Steps):</h3>
                    <div className="step-list">

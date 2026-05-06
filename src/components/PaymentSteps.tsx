@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './PaymentSteps.css';
 import { Check, Copy } from 'lucide-react';
 
@@ -10,24 +10,42 @@ interface PaymentStepsProps {
 }
 
 export const PaymentSteps: React.FC<PaymentStepsProps> = ({ price, phone, payerName, onConfirm }) => {
-  const handleCopy = () => {
-    navigator.clipboard.writeText(phone);
+  const [copied, setCopied] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // small entrance animation trigger
+    const t = setTimeout(() => setMounted(true), 20);
+    return () => clearTimeout(t);
+  }, []);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(phone);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch (e) {
+      // fallback: do nothing
+    }
   };
 
   return (
-    <div className="payment-steps glass-card">
+  <div className={`payment-steps glass-card ${mounted ? 'mounted' : ''}`}>
       <h3 className="section-title-sm">How to Purchase — Clear Steps</h3>
       <div className="steps-list">
-        <div className="step">
+        <div className="step first">
           <div className="step-num">1</div>
           <div className="step-body">
             <h4>Send Payment</h4>
-            <p>Send exactly <strong>{price} KSH</strong> to the account below using M-Pesa.</p>
-            <div className="number-box small">
-              <span className="phone-number">{phone}</span>
-              <button className="btn-copy" onClick={handleCopy}><Copy size={14}/> Copy</button>
+            <p className="prominent">Send exactly <strong>{price} KSH</strong> to the account below using M-Pesa.</p>
+            <div className="credentials-box">
+              <div className="number-box small">
+                <span className="phone-number">{phone}</span>
+                <button className="btn-copy" onClick={handleCopy}><Copy size={14}/> Copy</button>
+              </div>
+              {copied && <div className="copy-toast">Copied!</div>}
+              <div className="credentials-meta">Payee: <strong>Manager's Account</strong> • Name: <strong>{payerName}</strong></div>
             </div>
-            <p className="muted">Payee: <strong>Manager's Account</strong> • Name: <strong>{payerName}</strong></p>
           </div>
         </div>
 
