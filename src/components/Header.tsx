@@ -18,10 +18,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
           <h1 className="logo-text">MAX PREMIUM SUITE</h1>
         </Link>
         
-        <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-          ☰
-        </button>
-
         <nav className={`main-nav ${isOpen ? 'open' : ''}`}>
           <button className="mobile-close-btn" onClick={closeMenu} aria-label="Close menu">✕</button>
           <Link to="/" onClick={closeMenu}>Home</Link>
@@ -40,9 +36,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
              <kbd>Ctrl+K</kbd>
            </button>
         </div>
-      </div>
-      <div className="tagline-banner">
-        <span>Verified Cracked Premium Apps • Virus-Free • Instant Delivery</span>
+
+        {/* mobile menu button moved to the far right of the header */}
+        <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          ☰
+        </button>
       </div>
     </header>
   );
