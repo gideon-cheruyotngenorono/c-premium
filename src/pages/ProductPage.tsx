@@ -201,6 +201,7 @@ export const ProductPage: React.FC = () => {
 
                      <div className="payment-details">
                        <p><strong>Pay To (Account Tag):</strong> Manager's Account</p>
+                       <p><strong>Name:</strong> Regina</p>
                        <p><strong>Network:</strong> Safaricom M-Pesa</p>
                      </div>
 
