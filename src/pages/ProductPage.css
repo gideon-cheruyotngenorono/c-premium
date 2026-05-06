@@ -198,6 +198,28 @@
   padding: 32px;
 }
 
+/* Purchase vs Install spacing */
+.purchase-block {
+  margin-top: 28px;
+  margin-bottom: 8px;
+  padding: 20px;
+}
+
+.install-block {
+  margin-top: 20px;
+  padding: 28px;
+}
+
+.purchase-block .payment-steps, .install-block {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.purchase-block + .install-block {
+  margin-top: 22px;
+}
+
 .features-list {
   list-style: none;
   display: grid;
