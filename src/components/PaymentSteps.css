@@ -1,0 +1,14 @@
+.payment-steps {
+  padding: 20px;
+}
+.steps-list { display:flex; flex-direction:column; gap:16px; }
+.step { display:flex; gap:12px; align-items:flex-start; }
+.step-num { width:44px; height:44px; border-radius:50%; background:var(--primary-accent); color:#000; display:flex; align-items:center; justify-content:center; font-weight:800; }
+.step-body h4 { margin:0 0 6px 0; color:#fff; }
+.number-box.small { display:flex; gap:12px; align-items:center; margin-top:8px; background:rgba(255,255,255,0.02); padding:8px 12px; border-radius:8px; }
+.phone-number { font-weight:700; color:#fff; }
+.muted { color:var(--text-secondary); font-size:0.9rem; margin-top:6px; }
+.next-actions { margin-top:12px; }
+.btn-copy { background: rgba(255,255,255,0.04); color:#fff; padding:6px 10px; border-radius:8px; display:inline-flex; gap:8px; align-items:center; }
+.btn-whatsapp.small { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; background:#25D366; color:#fff; text-decoration:none; }
+.btn-primary { padding:10px 16px; background:var(--primary-accent); color:#000; border-radius:8px; font-weight:700; }

@@ -2,23 +2,24 @@ import React, { useState, useMemo } from 'react';
 import { useParams, useLocation, useSearchParams } from 'react-router-dom';
 import { allApps } from '../data';
 import { AppCard } from '../components/AppCard';
-import { Check, ShieldCheck, Smartphone, Copy, CheckCircle2 } from 'lucide-react';
+import { Check, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import './ProductPage.css';
 import { BackButton } from '../components/BackButton';
 import { useStock } from '../context/StockContext';
+import { PaymentSteps } from '../components/PaymentSteps';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const location = useLocation();
   const [searchParams] = useSearchParams();
 
-  // Determine initial payment step from navigation state or ?step= query param
+  // Determine initial payment visibility from navigation state or ?step= query param
   const navStep = (location.state && (location.state as any).openStep) as number | undefined;
   const qp = searchParams.get('step');
   const qpStep = qp ? parseInt(qp, 10) : NaN;
-  const initialStep = Number.isFinite(navStep) && navStep ? navStep : (!isNaN(qpStep) ? qpStep : 0);
-  const [paymentStep, setPaymentStep] = useState<0 | 1 | 2 | 3>((initialStep as 0 | 1 | 2 | 3) || 0);
-  const [copied, setCopied] = useState(false);
+  const initialVisible = Number.isFinite(navStep) && navStep ? true : (!isNaN(qpStep) ? qpStep > 0 : false);
+  const [showPayment, setShowPayment] = useState<boolean>(initialVisible);
+  const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
   const [selectedSubModelIdx, setSelectedSubModelIdx] = useState(0);
   
   const app = useMemo(() => allApps.find(a => a.id === productId), [productId]);
@@ -31,18 +32,10 @@ export const ProductPage: React.FC = () => {
     return <div className="container py-20 text-center"><h2 className="text-secondary">Product Not Found</h2></div>;
   }
 
-  const activeSubModelName = app.subModels ? ` - ${app.subModels[selectedSubModelIdx].name}` : '';
   const basePrice = app.ourPrice + (app.subModels ? app.subModels[selectedSubModelIdx].priceDelta : 0);
   const currentPrice = basePrice;
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText("0701648600");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const whatsappMsg = `hello Max Premium Siute, I have paid for ${app.name}${activeSubModelName} (ONE-TIME PAYMENT) at ${currentPrice} KSH. Here is my screenshot.`;
-  const whatsappLink = `https://wa.me/254701648600?text=${encodeURIComponent(whatsappMsg)}`;
+  // copy handled by PaymentSteps component
 
   return (
     <div className="product-page">
@@ -83,10 +76,9 @@ export const ProductPage: React.FC = () => {
 
       <div className="container product-grid">
         <div className="main-col">
-          {/* Pricing Toggle & Sections */}
-          <div className="pricing-section">
-             {paymentStep === 0 && (
-               <>
+       {/* Pricing Toggle & Sections */}
+       <div className="pricing-section">
+         <>
                  {/* SubModel Selector */}
                  {app.subModels && (
                    <div className="submodels-selector mb-8 p-6 glass-card">
@@ -128,7 +120,7 @@ export const ProductPage: React.FC = () => {
                  )}
 
                  <div className="pricing-cards" style={{ gridTemplateColumns: '1fr' }}>
-                   <div className="pricing-card glass-card yearly-card active" onClick={() => setPaymentStep(1)}>
+                   <div className="pricing-card glass-card yearly-card active" onClick={() => { setShowPayment(true); }}>
                      <div className="ribbon">LIFETIME ACCESS</div>
                      <h3>One-Time Payment</h3>
                      <div className="price-display">
@@ -141,7 +133,7 @@ export const ProductPage: React.FC = () => {
                        <li><Check size={16}/> Instant login credentials delivered</li>
                        <li><Check size={16}/> Developer API unlocks enabled</li>
                      </ul>
-                     <button className="btn-primary w-full pulse-btn" onClick={() => setPaymentStep(1)}>PROCEED TO CHECKOUT</button>
+                     <button className="btn-primary w-full pulse-btn" onClick={() => { setShowPayment(true); }}>PROCEED TO CHECKOUT</button>
                    </div>
                  </div>
 
@@ -179,54 +171,16 @@ export const ProductPage: React.FC = () => {
                    </div>
                  </div>
                </>
-             )}
-
-             {/* Payment Flow */}
-             {paymentStep > 0 && (
-               <div className="payment-flow glass-card">
-                 <button className="back-btn" onClick={() => setPaymentStep(paymentStep > 1 ? (paymentStep - 1) as any : 0)}>← Back</button>
-                 
-                 {paymentStep === 1 && (
-                   <div className="payment-step-panel">
-                     <div className="mpesa-icon-large"><Smartphone size={48} /></div>
-                     <h2>Send exactly <span className="text-primary">{currentPrice} KSH</span> to:</h2>
-                     
-                     <div className="number-box">
-                       <span className="phone-number">0701648600</span>
-                       <button className="btn-copy" onClick={handleCopy}>
-                         {copied ? <Check size={18} /> : <Copy size={18} />}
-                         {copied ? 'Copied!' : 'Copy'}
-                       </button>
-                     </div>
-
-                     <div className="payment-details">
-                       <p><strong>Pay To (Account Tag):</strong> Manager's Account</p>
-                       <p><strong>Name:</strong> Regina</p>
-                       <p><strong>Network:</strong> Safaricom M-Pesa</p>
-                     </div>
-
-                     <div className="timer-notice">
-                       ⏳ We verify payment in our system within 2-30 minutes
-                     </div>
-
-                     <button className="btn-primary mt-6 w-full" onClick={() => setPaymentStep(2)}>I HAVE SENT THE MONEY</button>
-                   </div>
-                 )}
-
-                 {paymentStep === 2 && (
-                   <div className="payment-step-panel">
-                     <h2>After Payment, Send Screenshot:</h2>
-                     <a href={whatsappLink} target="_blank" rel="noreferrer" className="btn-whatsapp w-full mt-4" onClick={() => setPaymentStep(3)}>
-                       💬 SEND SCREENSHOT ON WHATSAPP
-                     </a>
-                   </div>
-                 )}
-
-                 {paymentStep === 3 && (
-                   <div className="payment-step-panel success-panel">
+             {/* Single-page payment steps */}
+             {showPayment && (
+               <div ref={(el) => { if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }}>
+                 {!showConfirmation ? (
+                   <PaymentSteps price={currentPrice} phone={"0701648600"} payerName={"Regina"} onConfirm={() => setShowConfirmation(true)} />
+                 ) : (
+                   <div className="payment-step-panel success-panel glass-card">
                      <h2 className="text-primary">🎉 What Happens Next:</h2>
                      <ul className="next-steps-list">
-                       <li><strong>1.</strong> We verify your screenshot (under 3 minutes)</li>
+                       <li><strong>1.</strong> We verify your screenshot in our system (within 2-30 minutes)</li>
                        <li><strong>2.</strong> We send you the direct download link + login credentials</li>
                        <li><strong>3.</strong> You install and enjoy premium access!</li>
                      </ul>
