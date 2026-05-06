@@ -13,6 +13,7 @@ export interface App {
   ourPrice: number;
   features: string;
   healthCheck: string;
+  stock?: number;
   category: string;
   description?: string;
   model?: string;
@@ -601,15 +602,17 @@ export const aiModels: App[] = [
   {
     id: "claude-anthropic",
     name: "Claude by Anthropic",
-    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Anthropic_logo.svg", // fallback
+    // use local SVG asset for a guaranteed logo in the app
+    logoUrl: "/src/assets/anthropic-logo.svg",
     size: "N/A (Cloud)",
     rating: 4.8,
     officialPrice: 3000,
     ourPrice: 110,
     features: "Complex ethical reasoning • Nuanced long-form documents • Superior coding assistance",
+    stock: 12,
     category: "AI Models",
     bestFor: "Complex ethical reasoning, nuanced long-form documents, and superior coding assistance",
-    healthCheck: "✅ VERIFIED • VIRUS-FREE • PRE-ACTIVATED",
+    healthCheck: "✅ VERIFIED • SECURE",
     subModels: [
       { name: "Claude 3 Haiku", priceDelta: 0 },
       { name: "Claude 3.5 Sonnet", priceDelta: 20 },

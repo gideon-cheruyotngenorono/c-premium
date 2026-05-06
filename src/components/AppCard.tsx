@@ -15,7 +15,12 @@ export const AppCard: React.FC<AppCardProps> = ({ app }) => {
     <div className="glass-card app-card">
       <div className="card-header">
         <img src={app.logoUrl} alt={app.name} className="app-logo" />
-        <div className="badge-tag price-tag">{app.ourPrice} KSH</div>
+        <div>
+          <div className="badge-tag price-tag">{app.ourPrice} KSH</div>
+          {typeof app.stock === 'number' && (
+            <div className="stock-badge">{app.stock} in stock</div>
+          )}
+        </div>
       </div>
       
       <div className="card-body">

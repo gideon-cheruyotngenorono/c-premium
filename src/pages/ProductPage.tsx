@@ -58,16 +58,22 @@ export const ProductPage: React.FC = () => {
              <div className="product-rating">
                ⭐ {app.rating} from {Math.floor(Math.random() * 5000) + 1000} users
              </div>
-             <div className="badass-health-check mt-4">
+             <div className="verification-block mt-4">
                 <ShieldCheck size={20} className="animate-pulse-icon" />
-                <span>BADASS HEALTH CHECK: 100% CLEAN</span>
+                <div className="verification-text">
+                  <strong>Verified Clean</strong>
+                  <div className="verification-sub">Scanned with VirusTotal & internal checks • Monthly re-validation</div>
+                </div>
              </div>
              <div className="status-indicators mt-3">
                <span>✅ VirusTotal Verified</span>
-               <span>✅ Pre-Cracked</span>
-               <span>✅ No Malware</span>
-               <span>✅ Monthly Logins</span>
+               <span>✅ Pre-Activated Delivery</span>
+               <span>✅ No Known Malware</span>
+               <span>✅ Monthly Re-Validation</span>
              </div>
+             {typeof app.stock === 'number' && (
+               <div className="stock-info mt-3">Only <strong>{app.stock}</strong> left in stock</div>
+             )}
            </div>
          </div>
       </div>

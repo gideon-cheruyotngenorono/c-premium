@@ -54,6 +54,36 @@
   box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
 }
 
+.verification-block {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 10px 16px;
+  border-radius: 12px;
+  color: var(--text-secondary);
+}
+
+.verification-text strong {
+  color: #fff;
+  display: block;
+}
+
+.verification-sub {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.stock-info {
+  color: #ffecb3;
+  background: rgba(255,236,179,0.06);
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  font-weight: 700;
+}
+
 .status-indicators {
   display: flex;
   flex-wrap: wrap;
