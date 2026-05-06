@@ -200,12 +200,12 @@ export const ProductPage: React.FC = () => {
                      </div>
 
                      <div className="payment-details">
-                       <p><strong>Name:</strong> Regina</p>
+                       <p><strong>Pay To (Account Tag):</strong> Manager's Account</p>
                        <p><strong>Network:</strong> Safaricom M-Pesa</p>
                      </div>
 
                      <div className="timer-notice">
-                       ⏳ We verify payments within 2 minutes
+                       ⏳ We verify payment in our system within 2-30 minutes
                      </div>
 
                      <button className="btn-primary mt-6 w-full" onClick={() => setPaymentStep(2)}>I HAVE SENT THE MONEY</button>
