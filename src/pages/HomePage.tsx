@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { aiModels } from '../data';
+import { aiModels, allApps } from '../data';
 import { ShieldCheck, Zap, Lock, RefreshCcw, Download } from 'lucide-react';
 import './HomePage.css';
 import { BackButton } from '../components/BackButton';
@@ -9,6 +9,7 @@ export const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
   const categories = [
+    { name: "All", count: `${allApps.length} tools`, id: "All", color: "rgba(255,255,255,0.04)" },
     { name: "🎬 Streaming & Entertainment", count: "10+ apps", id: "Streaming & Entertainment", color: "var(--secondary-accent-glow)" },
     { name: "💬 Social & Communication", count: "10+ apps", id: "Social & Communication", color: "rgba(59, 130, 246, 0.4)" },
     { name: "🎨 Design, Video & Creative", count: "10+ apps", id: "Design, Video & Creative", color: "rgba(236, 72, 153, 0.4)" },
