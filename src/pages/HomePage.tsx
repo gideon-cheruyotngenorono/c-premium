@@ -4,16 +4,17 @@ import { aiModels, allApps } from '../data';
 import { ShieldCheck, Zap, Lock, RefreshCcw, Download } from 'lucide-react';
 import './HomePage.css';
 import { BackButton } from '../components/BackButton';
+import { AppCard } from '../components/AppCard';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
   const categories = [
-    { name: "All", count: `${allApps.length} tools`, id: "All", color: "rgba(255,255,255,0.04)" },
-    { name: "🎬 Streaming & Entertainment", count: "10+ apps", id: "Streaming & Entertainment", color: "var(--secondary-accent-glow)" },
-    { name: "💬 Social & Communication", count: "10+ apps", id: "Social & Communication", color: "rgba(59, 130, 246, 0.4)" },
-    { name: "🎨 Design, Video & Creative", count: "10+ apps", id: "Design, Video & Creative", color: "rgba(236, 72, 153, 0.4)" },
-    { name: "⚡ Developer & AI Platforms", count: "10+ apps", id: "Developer & AI Platforms", color: "var(--primary-accent-glow)" }
+    { name: "All Tools", count: `${allApps.length} tools`, id: "All", color: "rgba(255,255,255,0.04)" },
+    { name: "AI & Machine Learning", count: "15+ apps", id: "AI & Machine Learning", color: "rgba(59, 130, 246, 0.4)" },
+    { name: "Design & Creativity", count: "12+ apps", id: "Design & Creativity", color: "rgba(236, 72, 153, 0.4)" },
+    { name: "Streaming & Entertainment", count: "10+ apps", id: "Streaming & Entertainment", color: "var(--secondary-accent-glow)" },
+    { name: "Social & Communication", count: "8+ apps", id: "Social & Communication", color: "var(--primary-accent-glow)" }
   ];
 
   // Simple FAQ accordion (local component)
@@ -45,27 +46,28 @@ export const HomePage: React.FC = () => {
       </div>
       {/* Hero Section */}
       <section className="hero-section">
-        <div className="neon-grid-bg"></div>
         <div className="container hero-content text-center">
-          <h1 className="hero-title">Unlock Every Premium Tool for Pennies</h1>
+          <h1 className="hero-title">C-PREMIUM APPS</h1>
           <p className="hero-subtitle">
-            Pay 70-350 KSH once. Get monthly premium logins. 100% verified crack, no viruses, no surveys.
+            Affordable, reliable, and virus-free. Explore our curated collection of premium apps.
           </p>
           <button 
             className="btn-primary hero-btn"
             onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Browse All Tools ↓
+            Explore Categories ↓
           </button>
+        </div>
+      </section>
 
-          <div className="stats-bar glass-card">
-            <div className="stat"><strong>500+</strong> Tools</div>
-            <div className="stat-divider"></div>
-            <div className="stat"><strong>10,000+</strong> Happy Users</div>
-            <div className="stat-divider"></div>
-            <div className="stat"><strong>24/7</strong> WhatsApp Support</div>
-            <div className="stat-divider"></div>
-            <div className="stat"><strong>99.9%</strong> Uptime</div>
+      {/* Featured Apps Section */}
+      <section className="featured-apps">
+        <div className="container">
+          <h2 className="section-title">Featured Apps</h2>
+          <div className="apps-grid">
+            {allApps.slice(0, 6).map(app => (
+              <AppCard key={app.id} app={app} />
+            ))}
           </div>
         </div>
       </section>

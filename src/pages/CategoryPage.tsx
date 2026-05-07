@@ -10,8 +10,8 @@ export const CategoryPage: React.FC = () => {
   
   const categoryApps = useMemo(() => {
     if (!categoryId) return [];
-    if (categoryId === 'All') return allApps;
-    return allApps.filter(app => app.category === categoryId);
+    if (categoryId === 'All') return allApps.sort((a, b) => a.name.localeCompare(b.name));
+    return allApps.filter(app => app.category === categoryId).sort((a, b) => a.name.localeCompare(b.name));
   }, [categoryId]);
 
   if (!categoryId || categoryApps.length === 0) {
@@ -36,17 +36,17 @@ export const CategoryPage: React.FC = () => {
         style={{ '--cat-bg': getGradient(categoryId) } as React.CSSProperties}
       >
         <div className="container header-inner">
-           <h1 className="category-title">{categoryId}</h1>
-           <p className="category-subtitle">Explore our premium selection of verified {categoryId.toLowerCase()} tools.</p>
+           <h1 className="category-title">C-PREMIUM APPS</h1>
+           <p className="category-subtitle">Explore our premium selection of verified tools.</p>
            <div className="badge-tag price-tag">{categoryApps.length} Tools Available</div>
         </div>
       </div>
 
       <div className="container category-content">
-        <div className="apps-grid">
-           {categoryApps.map(app => (
-              <AppCard key={app.id} app={app} />
-           ))}
+        <div className="category-grid">
+          {categoryApps.map(app => (
+            <AppCard key={app.id} app={app} />
+          ))}
         </div>
       </div>
     </div>

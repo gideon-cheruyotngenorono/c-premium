@@ -47,7 +47,7 @@ export const ProductPage: React.FC = () => {
            <img src={app.logoUrl} alt={app.name} className="product-hero-logo" />
            <div className="product-hero-info">
              <div className="badge-tag price-tag mb-2">PREMIUM UNLOCKED</div>
-             <h1 className="product-name">{app.name}</h1>
+             <h1 className="product-name">C-PREMIUM APPS</h1>
              <div className="product-rating">
                ⭐ {app.rating} from {Math.floor(Math.random() * 5000) + 1000} users
              </div>
@@ -130,7 +130,7 @@ export const ProductPage: React.FC = () => {
             {showPayment && (
               <div ref={(el) => { if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }} className="purchase-block mt-6">
                 {!showConfirmation ? (
-                  <PaymentSteps price={currentPrice} phone={"0701648600"} payerName={"Regina"} onConfirm={() => setShowConfirmation(true)} />
+                  <PaymentSteps price={currentPrice} phone={"0705800030"} payerName={"Kipkoech Ngeno"} onConfirm={() => setShowConfirmation(true)} />
                 ) : (
                   <div className="confirmation-panel glass-card">
                     <div className="confirmation-accent-bar"></div>

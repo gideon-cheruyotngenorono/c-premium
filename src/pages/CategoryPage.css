@@ -1,19 +1,15 @@
 .category-page {
   min-height: 80vh;
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .category-header {
   padding: 40px 0;
   margin-bottom: 24px;
-  background: radial-gradient(circle at right top, var(--cat-bg), transparent 60%);
-  border-bottom: 1px solid var(--glass-border);
-}
-
-@media (min-width: 768px) {
-  .category-header {
-    padding: 60px 0;
-    margin-bottom: 40px;
-  }
+  background: linear-gradient(145deg, var(--neon-glow), transparent 60%);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header-inner {
@@ -24,27 +20,15 @@
 }
 
 .category-title {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin: 0;
-  color: #fff;
-}
-
-@media (min-width: 768px) {
-  .category-title {
-    font-size: 2.5rem;
-  }
+  color: var(--neon-glow);
+  text-shadow: 0 0 8px var(--neon-glow);
 }
 
 .category-subtitle {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  max-width: 600px;
-}
-
-@media (min-width: 768px) {
-  .category-subtitle {
-    font-size: 1.1rem;
-  }
+  color: var(--text-color);
+  font-size: 1rem;
 }
 
 /* Apps grid — 1 col on small, 2 on medium, 3 on large */

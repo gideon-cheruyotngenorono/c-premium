@@ -2,10 +2,10 @@ import React from 'react';
 import './Reviews.css';
 
 const REVIEWS = [
-  { name: 'Wanjiru', rating: 5, text: 'Got my access within 2 mins, works perfectly!' },
-  { name: 'Otieno', rating: 5, text: 'Legit and fast delivery. Thank you!' },
-  { name: 'Amina', rating: 4, text: 'Delivered quickly. Instructions were clear.' },
-  { name: 'Kahiga', rating: 5, text: 'Working full features. Great value.' }
+  { name: 'Mwangi', rating: 5, text: 'Amazing service, highly recommend!' },
+  { name: 'Njeri', rating: 5, text: 'Fast and reliable, will use again.' },
+  { name: 'Mutua', rating: 4, text: 'Good experience, clear instructions provided.' },
+  { name: 'Chebet', rating: 5, text: 'Exceeded my expectations, great value!' }
 ];
 
 export const Reviews: React.FC = () => {
